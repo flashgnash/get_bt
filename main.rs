@@ -30,7 +30,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
-    for device in connected_devices {
+    for device in &connected_devices {
         println!("{}", device);
     }
     

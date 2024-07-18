@@ -1,5 +1,5 @@
 [package]
-name = "getBt"
+name = "get_bt"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,5 +9,5 @@ edition = "2021"
 blurz = "0.4.0"
 
 [[bin]]
-name = "getBt"
+name = "get_bt"
 path = "main.rs"

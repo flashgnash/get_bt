@@ -33,10 +33,11 @@
     };
 
     packages.${system}.default = pkgs.rustPlatform.buildRustPackage {
-      pname = "Generic rust package";
+      pname = "get_bt";
       version = "0.0.1";
-      src = ./.;
-  
+      src = ./.; 
+      cargoBuildFlags = "-p get_bt";
+      
       cargoLock = {
         lockFile = ./Cargo.lock;
       };
@@ -44,14 +45,14 @@
       nativeBuildInputs = with pkgs; [ pkg-config openssl.dev sqlite];
       PKG_CONFIG_PATH = "${pkgs.dbus.dev}/lib/pkgconfig";
 
-      # buildPhase = ''
-      #   cargo build
-      # '';
-      #
-      # installPhase = ''
-      #   mkdir -p $out/bin
-      #   cp target/debug/ordis $out/bin
-      # '';
+      buildPhase = ''
+        cargo build
+      '';
+
+      installPhase = ''
+        mkdir -p $out/bin
+        cp target/debug/get_bt $out/bin
+      '';
 
     };
   };

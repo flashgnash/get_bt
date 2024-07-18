@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "getBt"
+name = "get_bt"
 version = "0.1.0"
 dependencies = [
  "blurz",
