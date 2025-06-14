@@ -1,9 +1,9 @@
 extern crate blurz;
 
-use std::error::Error;
 use blurz::BluetoothAdapter;
 use blurz::BluetoothDevice;
 use blurz::BluetoothSession;
+use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let session = BluetoothSession::create_session(None)?;
@@ -17,7 +17,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     for path in device_list.iter() {
         let device = BluetoothDevice::new(&session, path.to_string());
 
-        let device_name = device.get_name()?;
+        let device_name = device.get_name().unwrap_or_else(|_| "Unknown".to_string());
         let mac = device.get_address()?;
         let connected = device.is_connected()?;
 
@@ -33,11 +33,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     for device in &connected_devices {
         println!("{}", device);
     }
-    
+
     if !connected_devices.is_empty() {
         println!("-----------|");
     }
-    
+
     for device in disconnected_devices {
         println!("{}", device);
     }
